@@ -8,6 +8,13 @@
       <p *ngIf="articleDescription.type == 'paragraph'">
         {{articleDescription.content}}
       </p>
+      <ul *ngIf="articleDescription.type == 'album'" >
+        <li *ngFor="let media of albums[articleDescription.albumId]">
+          <img src="http://localhost:8080/api/image{{media.url}}"
+            class="rounded img-thumbnail cursor-pointer overlay" 
+            width="300" height="300"/>
+        </li>
+    </ul>
     </div>
   </div>
 </div>
