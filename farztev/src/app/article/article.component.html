@@ -1,0 +1,13 @@
+<h1>{{article.name}}</h1>
+<div *ngFor="let articleDescription of descriptionItems">
+  <div class="row">
+    <div class="col-sm-10">
+      <h3 *ngIf="articleDescription.type == 'title'">
+        {{articleDescription.content}}
+      </h3>
+      <p *ngIf="articleDescription.type == 'paragraph'">
+        {{articleDescription.content}}
+      </p>
+    </div>
+  </div>
+</div>
