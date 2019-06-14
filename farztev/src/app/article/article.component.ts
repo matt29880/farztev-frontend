@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ArticlesService} from '../articles/articles.service';
 import {MediaService} from '../media/media.service';
 import {Article} from '../articles/article';
@@ -26,13 +26,16 @@ export class ArticleComponent implements OnInit {
   article: Article;  
   descriptionItems: ArticleDescription[];
   albums = {};
+  @Input('articleId') articleId : number;
 
   ngOnInit() {
     this.article = new Article();
-    // The JavaScript (+) operator converts the string to a number
-    let articleId = +this.route.snapshot.params['id'];
-    if (articleId != null) {
-      this.getArticle(articleId).subscribe(article => {
+    if (this.articleId == null) {
+      // The JavaScript (+) operator converts the string to a number
+      this.articleId = +this.route.snapshot.params['id'];
+    }
+    if (this.articleId != null) {
+      this.getArticle(this.articleId).subscribe(article => {
         var article = article;
         var items = JSON.parse(article.description);
         items

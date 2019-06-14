@@ -1,3 +1,6 @@
+<p>
+    <img src="http://localhost:8080/api/image/{{article.thumbnailUrl}}?width=720">
+</p>
 <h1>{{article.name}}</h1>
 <div *ngFor="let articleDescription of descriptionItems">
   <div class="row">
@@ -8,17 +11,17 @@
       <p *ngIf="articleDescription.type == 'paragraph'">
         {{articleDescription.content}}
       </p>
-      <ul *ngIf="articleDescription.type == 'album'" >
-        <li *ngFor="let media of albums[articleDescription.albumId]">
-          <img src="http://localhost:8080/api/image{{media.url}}"
-            class="rounded img-thumbnail cursor-pointer overlay" 
-            width="300" height="300"/>
-        </li>
-      </ul>
-      <p *ngIf="articleDescription.type == 'photo'" >
-        <img src="http://localhost:8080/api/image{{articleDescription.url}}"
-          class="rounded img-thumbnail cursor-pointer overlay" 
-          width="300" height="300"/>
+      <div class="row" *ngIf="articleDescription.type == 'album'">
+        <div class="col-md-3" *ngFor="let media of albums[articleDescription.albumId]">
+          <div class="img-thumbnail">
+            <img src="http://localhost:8080/api/image{{media.url}}?width=250&height=250" alt="Lights"
+              style="width:100%">
+          </div>
+        </div>
+      </div>
+      <p *ngIf="articleDescription.type == 'photo'" style="text-align: center;">
+        <img src="http://localhost:8080/api/image{{articleDescription.url}}?width=500&height=500"
+          class="rounded img-thumbnail cursor-pointer overlay"/>
       </p>
     </div>
   </div>

@@ -1,5 +1,17 @@
-<ul>
-  <li *ngFor="let article of listarticle">
-    <a [routerLink]="['/article', article.id]">{{article.name}}</a>
-  </li>
-</ul>
+<article *ngFor="let article of listarticle">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="img-thumbnail">
+        <a [routerLink]="['/article', article.id]">
+          <img src="http://localhost:8080/api/image/{{article.thumbnailUrl}}?width=330&height=220" alt="Lights"
+            style="width:100%">
+        </a>
+      </div>
+    </div>
+    <div class="col-md-8">
+        <p>{{article.countryName}}</p>
+        <h3>{{article.name}}</h3>
+        <p>Les Grisons, ce canton le plus à l’est de la Suisse, mais aussi le plus grand m’a déjà séduite par le passé (lire cet article)….</p>
+    </div>
+  </div>
+</article>

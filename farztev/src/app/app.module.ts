@@ -10,6 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleComponent } from './article/article.component';
 import { HomeComponent } from './home/home.component';
+import { BannerComponent } from './banner/banner.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     ArticlesComponent,
     ArticleComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    BannerComponent
   ],
   imports: [
     BrowserModule,
